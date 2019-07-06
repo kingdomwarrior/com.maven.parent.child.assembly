@@ -1,0 +1,70 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+  <id>bin</id>
+  <formats>
+    <format>zip</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+
+
+	
+                    
+  <moduleSets>
+  
+  
+    <moduleSet>
+    
+    <!-- <fileSets>
+		<fileSet>
+			<directory>${project.basedir}/src/main/resources</directory>
+
+			<includes>
+				<include>**/*.txt</include>
+
+			</includes>
+			<filtered>true</filtered>
+			<outputDirectory>logs</outputDirectory>
+		</fileSet>
+
+	</fileSets> -->
+    
+      <!-- Enable access to all projects in the current multimodule build! -->
+      <useAllReactorProjects>true</useAllReactorProjects>
+      
+      <!-- Now, select which projects to include in this module-set. -->
+      <includes>
+        <include>com.amol.parent.module:MavenChildProject</include>
+        <include>com.amol.parent.module:MavenChildJdbcProj</include>
+      </includes>
+      <binaries>
+        <outputDirectory>lib</outputDirectory>
+        <unpack>false</unpack>
+      </binaries>
+
+	<sources>
+		<includeModuleDirectory>false</includeModuleDirectory>
+		<fileSets>
+			<fileSet>
+				<outputDirectory>/logs</outputDirectory>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.txt</include>
+				</includes>
+			</fileSet>
+			<fileSet>
+				<outputDirectory>bin</outputDirectory>
+				<directory>src/main/java</directory>
+				<!-- <includes>
+					<include>**/*.class</include>
+				</includes> -->
+			</fileSet>
+		</fileSets>
+	</sources>
+    </moduleSet>
+    
+    
+  </moduleSets>
+ 
+
+</assembly>
